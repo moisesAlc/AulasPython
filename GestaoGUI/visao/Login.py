@@ -3,66 +3,30 @@ import tkinter.ttk as ttk
 from tkinter import messagebox
 
 
-class Login(tk.Tk):
+class Login:
     def __init__(self):
-        super().__init__()
+        pass
 
-    '''
-    def darkstyle(root):
-        """ Return a dark style to the window"""
-
-        style = ttk.Style(root)
-        # root.tk.call('source', '../themes/azure dark/azure dark.tcl')
-        # root.tk.call('source', '../themes/scidthemes.0.9.3\scidthemes.tcl')
-        root.tk.call('source', '../themes/tkBreeze/breeze-dark/breeze-dark.tcl')
-        style.theme_use('breeze-dark')
-        # style.configure("Accentbutton", selectbackground='white')
-        return style
-
-    def mostra_msg(self):
-        messagebox.showinfo('Título', 'Mensagem')
+    def btn_login_click(self, login, senha):
+        messagebox.showinfo('Título', f'Login: {login}, Senha: {senha}')
 
     def main_window(self):
         """ The window with the darkstyle """
         root = tk.Tk()
-        root.title("Login")
+        root.title("Gestão de Automóveis - Login")
         root.resizable(True, True)
-        root.geometry("600x350")
-        root.iconbitmap("../img/icone.ico")
+        root.geometry("600x200")
+        root.iconbitmap(r'.\\img\\icone.ico')
 
-        img = tk.PhotoImage(file="../img/logo20dpi.png")
-
-        PADY = 15
-        FONT = 'Helvetica'
-
-        #style = darkstyle(root)
-        #style.configure('my.TButton', font=(FONT, 14))
-
-        frame_logo_welcome = ttk.Frame(root)
-        logo = ttk.Label(
-            frame_logo_welcome,
-            anchor="w",
-            image=img)
-
-        welcome = ttk.Label(
-            frame_logo_welcome,
-            text="Gestão de Automóveis",
-            font=(FONT, 30),
-            anchor="e")
-
-        logo.pack(side="left")
-        welcome.pack(side="right", padx=15)
-
-        frame_logo_welcome.pack(pady=PADY + 10)
-
-        # -------------------------------------------------
+        pady = 15
+        font = 'Helvetica'
 
         frame_authorization = ttk.Frame(root)
 
         login_label = ttk.Label(
             frame_authorization,
             text="Login",
-            font=(FONT, 12)
+            font=(font, 12)
         )
 
         login_entry = ttk.Entry(
@@ -75,7 +39,7 @@ class Login(tk.Tk):
         password_label = ttk.Label(
             frame_authorization,
             text="Senha",
-            font=(FONT, 12)
+            font=(font, 12)
         )
 
         password_entry = ttk.Entry(
@@ -87,10 +51,10 @@ class Login(tk.Tk):
         )
         password_entry.insert(0, 'Min 6 characters')
 
-        login_label.grid(row=0, column=0, padx=10, pady=PADY)
-        login_entry.grid(row=0, column=1, padx=10, pady=PADY)
-        password_label.grid(row=1, column=0, padx=10, pady=PADY)
-        password_entry.grid(row=1, column=1, padx=10, pady=PADY)
+        login_label.grid(row=0, column=0, padx=10, pady=pady)
+        login_entry.grid(row=0, column=1, padx=10, pady=pady)
+        password_label.grid(row=1, column=0, padx=10, pady=pady)
+        password_entry.grid(row=1, column=1, padx=10, pady=pady)
 
         frame_authorization.pack()
 
@@ -99,9 +63,9 @@ class Login(tk.Tk):
             text="Login",
             width=20,
             style='my.TButton',
-            #command=mostra_msg
+            command=lambda : self.btn_login_click(login_entry.get(), password_entry.get())
         )
 
-        button.pack(pady=PADY)
+        button.pack(pady=pady)
 
-        root.mainloop()'''
+        root.mainloop()
