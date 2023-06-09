@@ -11,6 +11,15 @@ class Automovel:
         self.alugado = alugado
         Automovel.contagem += 1
 
+    def __init__(self, automovel: tuple):
+        self.nome = automovel[1],
+        self.marca = automovel[2],
+        self.ano = automovel[3],
+        self.cor = automovel[4],
+        self.numero = automovel[0],
+        self.alugado = automovel[5]
+        Automovel.contagem += 1
+
     def get_nome(self):
         return self.nome[0]
 

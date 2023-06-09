@@ -1,8 +1,8 @@
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import END
-
-from GestaoGUI.models.Automovel import Automovel
+from GestaoGUI.persistencia.automoveis_db import *
+from GestaoGUI.modelos.Automovel import Automovel
 
 
 def set_text(entry_widget, text):
@@ -15,13 +15,14 @@ class Detail(ttk.Frame):
         super().__init__(root)
 
         # Configure vehicles list
-        self.vehicles_list = [
+        '''self.vehicles_list = [
             Automovel("Ford Mustang GT", "Ford", 2015, "branco", True),
             Automovel("Hyundai Tiburon GT V6", "Hyundai", 2016, "cinza", False),
             Automovel("Lamborghini Murciélago", "Lamborghini", 2017, "preto", True),
             Automovel("Nissan 350Z", "Nissan", 2018, "verde perolado", False),
             Automovel("Subaru Impreza WRX", "Subaru", 2019, "roxo", True),
-        ]
+        ]'''
+        self.vehicles_list = retorna_automoveis()
 
         # Configure vehicles_listbox
         vehicles_listbox = tk.Listbox(root, width=60, selectmode='single')
