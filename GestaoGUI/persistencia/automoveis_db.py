@@ -18,9 +18,5 @@ def retorna_automoveis():
     result = cursor.execute("SELECT * FROM automoveis").fetchall()
     automoveis = []
     for automovel in result:
-        '''print(automovel)
-        novo_automovel = Automovel()
-        novo_automovel.nome = automovel'''
-
         automoveis.append(Automovel(automovel))
     return automoveis
