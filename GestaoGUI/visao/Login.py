@@ -1,3 +1,4 @@
+import os
 import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import messagebox
@@ -57,7 +58,9 @@ class Login(tk.Tk):
             foreground='#666699',
             justify="center",
         )
-        login_entry.insert(0, 'E-mail/Username')
+
+        login = os.environ['LOGIN'] if os.environ['LOGIN'] else 'E-mail/Username'
+        login_entry.insert(0, login)
 
         password_label = ttk.Label(
             frame_authorization,
@@ -72,7 +75,9 @@ class Login(tk.Tk):
             foreground='#666699',
             justify="center",
         )
-        password_entry.insert(0, '******')
+
+        password = os.environ['PASSWORD'] if os.environ['PASSWORD'] else '******'
+        password_entry.insert(0, password)
 
         login_label.grid(row=0, column=0, padx=10, pady=self.pady)
         login_entry.grid(row=0, column=1, padx=10, pady=self.pady)
