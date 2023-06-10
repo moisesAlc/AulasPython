@@ -8,7 +8,7 @@ class Automovel:
         self.ano = ano,
         self.cor = cor
         self.numero = Automovel.contagem,
-        self.alugado = alugado
+        self.situacao_aluguel = alugado
         Automovel.contagem += 1
 
     def __init__(self, automovel: tuple):
@@ -17,20 +17,20 @@ class Automovel:
         self.ano = automovel[3],
         self.cor = automovel[4],
         self.numero = automovel[0],
-        self.alugado = automovel[5]
+        self.situacao_aluguel = bool(automovel[5])
         Automovel.contagem += 1
 
     def get_nome(self):
         return self.nome[0]
 
-    def get_alugado(self):
-        return "Alugado" if self.alugado else "Disponível para alugar"
+    def get_situacao_aluguel(self):
+        return "Alugado" if self.situacao_aluguel else "Disponível para alugar"
 
     def muda_cor(self, cor):
         self.cor = cor
 
     def aluga_carro(self):
-        self.alugado = True
+        self.situacao_aluguel = True
 
     def libera_carro(self):
-        self.alugado = False
+        self.situacao_aluguel = False
