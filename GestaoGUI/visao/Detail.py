@@ -14,17 +14,8 @@ class Detail(ttk.Frame):
     def __init__(self, root):
         super().__init__(root)
 
-        # Configure vehicles list
-        '''self.vehicles_list = [
-            Automovel("Ford Mustang GT", "Ford", 2015, "branco", True),
-            Automovel("Hyundai Tiburon GT V6", "Hyundai", 2016, "cinza", False),
-            Automovel("Lamborghini Murciélago", "Lamborghini", 2017, "preto", True),
-            Automovel("Nissan 350Z", "Nissan", 2018, "verde perolado", False),
-            Automovel("Subaru Impreza WRX", "Subaru", 2019, "roxo", True),
-        ]'''
         self.vehicles_list = retorna_automoveis()
 
-        # Configure vehicles_listbox
         vehicles_listbox = tk.Listbox(root, width=60, selectmode='single')
 
         for vehicle in self.vehicles_list:
@@ -37,29 +28,29 @@ class Detail(ttk.Frame):
         # Configure labels & entries
 
         ttk.Label(self, text="Número").pack()
-        self.w_numero = ttk.Entry(self, width=30)
-        self.w_numero.pack(pady=3)
+        self.entry_numero = ttk.Entry(self, width=30)
+        self.entry_numero.pack(pady=3)
 
         ttk.Label(self, text="Nome").pack()
-        self.w_nome = ttk.Entry(self, width=30)
-        self.w_nome.pack(pady=3)
+        self.entry_nome = ttk.Entry(self, width=30)
+        self.entry_nome.pack(pady=3)
 
         ttk.Label(self, text="Marca").pack()
-        self.w_marca = ttk.Entry(self, width=30)
-        self.w_marca.pack(pady=3)
+        self.entry_marca = ttk.Entry(self, width=30)
+        self.entry_marca.pack(pady=3)
 
         ttk.Label(self, text="Ano").pack()
-        self.w_ano = ttk.Entry(self, width=30)
-        self.w_ano.pack(pady=3)
+        self.entry_ano = ttk.Entry(self, width=30)
+        self.entry_ano.pack(pady=3)
 
         ttk.Label(self, text="Cor").pack()
-        self.w_cor = ttk.Entry(self, width=30)
-        self.w_cor.pack(pady=3)
+        self.entry_cor = ttk.Entry(self, width=30)
+        self.entry_cor.pack(pady=3)
 
         ttk.Label(self, text="Alugado").pack()
         self.valor_alugado = tk.BooleanVar()
-        self.w_alugado = ttk.Checkbutton(self, variable=self.valor_alugado, onvalue=True, offvalue=False)
-        self.w_alugado.pack(pady=3)
+        self.check_alugado = ttk.Checkbutton(self, variable=self.valor_alugado, onvalue=True, offvalue=False)
+        self.check_alugado.pack(pady=3)
 
     def change_data(self, evt):
 
@@ -68,9 +59,9 @@ class Detail(ttk.Frame):
         # value = widget_selected.get(index)
         automovel = self.vehicles_list[index]
 
-        set_text(self.w_numero, automovel.numero[0])
-        set_text(self.w_nome, automovel.nome[0])
-        set_text(self.w_marca, automovel.marca[0])
-        set_text(self.w_ano, automovel.ano[0])
-        set_text(self.w_cor, automovel.cor)
+        set_text(self.entry_numero, automovel.numero[0])
+        set_text(self.entry_nome, automovel.nome[0])
+        set_text(self.entry_marca, automovel.marca[0])
+        set_text(self.entry_ano, automovel.ano[0])
+        set_text(self.entry_cor, automovel.cor)
         self.valor_alugado.set(automovel.alugado)

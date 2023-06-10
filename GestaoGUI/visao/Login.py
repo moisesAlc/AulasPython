@@ -92,7 +92,6 @@ class Login(tk.Tk):
 
     def btn_login_click(self, login, senha):
         if verifica_login(login, senha):
-            messagebox.showinfo('', 'Login correto')
             MainWindow()
             self.destroy()
         else:
