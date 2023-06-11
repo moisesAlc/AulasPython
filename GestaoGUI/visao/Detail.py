@@ -4,7 +4,6 @@ from tkinter import END
 from GestaoGUI.persistencia.automoveis_db import *
 from GestaoGUI.modelos.Automovel import Automovel
 
-
 def set_text(entry_widget, text):
     entry_widget.delete(0, END)
     entry_widget.insert(0, text)
@@ -14,9 +13,17 @@ class Detail(ttk.Frame):
     def __init__(self, root):
         super().__init__(root)
 
+        """ Constantes """
+        self.pady = 15
+        
+        self.font = 'Helvetica'
+        self.font_size = 14
+
         self.vehicles_list = retorna_automoveis()
 
         vehicles_listbox = tk.Listbox(root, width=60, selectmode='single')
+
+        vehicles_listbox.config(font = self.font)
 
         for vehicle in self.vehicles_list:
             vehicles_listbox.insert(self.vehicles_list.index(vehicle) + 1, vehicle.get_nome())
@@ -27,33 +34,31 @@ class Detail(ttk.Frame):
 
         # Configure labels & entries
 
-        ttk.Label(self, text="Número").pack()
+        ttk.Label(self, text="Número", font=self.font).pack()
         self.entry_numero = ttk.Entry(self, width=30)
         self.entry_numero.pack(pady=3)
 
-        ttk.Label(self, text="Nome").pack()
+        ttk.Label(self, text="Nome", font=self.font).pack()
         self.entry_nome = ttk.Entry(self, width=30)
         self.entry_nome.pack(pady=3)
 
-        ttk.Label(self, text="Marca").pack()
+        ttk.Label(self, text="Marca", font=(self.font, self.font_size)).pack()
         self.entry_marca = ttk.Entry(self, width=30)
         self.entry_marca.pack(pady=3)
 
-        ttk.Label(self, text="Ano").pack()
+        ttk.Label(self, text="Ano", font=(self.font, self.font_size)).pack()
         self.entry_ano = ttk.Entry(self, width=30)
         self.entry_ano.pack(pady=3)
 
-        ttk.Label(self, text="Cor").pack()
+        ttk.Label(self, text="Cor", font=(self.font, self.font_size)).pack()
         self.entry_cor = ttk.Entry(self, width=30)
         self.entry_cor.pack(pady=3)
 
-        ttk.Label(self, text="Alugado").pack()
-        self.valor_alugado = tk.BooleanVar()
-        self.check_alugado = ttk.Checkbutton(self, variable=self.valor_alugado, onvalue=True, offvalue=False)
-        self.check_alugado.pack(pady=3)
+        ttk.Label(self, text="Alugado", font=(self.font, self.font_size)).pack()
+        self.entry_alugado = ttk.Entry(self, width=30)
+        self.entry_alugado.pack(pady=3)
 
     def change_data(self, evt):
-
         widget_selected = evt.widget
         index = int(widget_selected.curselection()[0])
         # value = widget_selected.get(index)
@@ -64,4 +69,4 @@ class Detail(ttk.Frame):
         set_text(self.entry_marca, automovel.marca[0])
         set_text(self.entry_ano, automovel.ano[0])
         set_text(self.entry_cor, automovel.cor)
-        self.valor_alugado.set(automovel.alugado)
+        set_text(self.entry_alugado, automovel.get_situacao_aluguel())
