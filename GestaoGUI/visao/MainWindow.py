@@ -20,9 +20,10 @@ class MainWindow(tk.Tk):
         """ Constantes """
         self.pady = 15
         self.font = 'Helvetica'
+        self.font_size = 14
 
         style = darkstyle(self)
-        style.configure('my.TButton', font=(self.font, 14))
+        style.configure('my.TButton', font=(self.font, self.font_size))
 
         # configure the details frame
         self.detail_frame = Detail(self).pack(ipadx=20, ipady=20)
