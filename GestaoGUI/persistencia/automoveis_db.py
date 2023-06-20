@@ -5,7 +5,7 @@ con = sqlite3.connect("persistencia/dados.db")
 cursor = con.cursor()
 
 
-def existem_dados():
+def existem_dados_sqlite3():
     result = cursor.execute("SELECT * FROM automoveis")
     if result.fetchone():
         return True

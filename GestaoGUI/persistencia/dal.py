@@ -1,13 +1,13 @@
-from GestaoGUI.persistencia.automoveis_db import existem_dados
+from GestaoGUI.persistencia.automoveis_db import existem_dados_sqlite3
+from GestaoGUI.persistencia.mongo.connect import make_connection
 
 
-def configuracao_inicial():
-    existem_dados()
-    '''
-self.vehicles_list = [
-            Automovel("Ford Mustang GT", "Ford", 2015, "branco", True),
-            Automovel("Hyundai Tiburon GT V6", "Hyundai", 2016, "cinza", False),
-            Automovel("Lamborghini Murciélago", "Lamborghini", 2017, "preto", True),
-            Automovel("Nissan 350Z", "Nissan", 2018, "verde perolado", False),
-            Automovel("Subaru Impreza WRX", "Subaru", 2019, "roxo", True),
-        ]'''
+def config_bd():
+    if existem_dados_sqlite3():
+        print("Conectado ao banco local com sucesso.")
+    else:
+        print("Não foi possível conectar ao banco local.")
+    if make_connection():
+        print("Conectado ao banco remoto com sucesso.")
+    else:
+        print("Não foi possível conectar ao banco remoto.")
