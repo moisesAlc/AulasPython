@@ -4,7 +4,7 @@ import os
 
 
 def make_connection():
-    uri = "mongodb+srv://msalcmd:"+os.environ['MONGODB_PASSWORD']+"@aluguelcarros.mqebr34.mongodb.net/?retryWrites=true&w=majority"
+    uri = "mongodb+srv://msalcmd:"+os.environ['MONGODB_PASSWORD']+os.environ['MONGODB_URI']
     # Create a new client and connect to the server
     client = MongoClient(uri, server_api=ServerApi('1'))
     # Send a ping to confirm a successful connection
